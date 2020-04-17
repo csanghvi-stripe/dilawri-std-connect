@@ -6,6 +6,7 @@ require('dotenv').config()
 const app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
+app.use(express.static('views/images')); 
 
 var style = "display: inline-block; margin-bottom: 1px; background-image: linear-gradient(#28a0e5,#015e94); -webkit-font-smoothing: antialiased; border: 0; padding: 1px; height: 32px; border-radius: 4px;     box-shadow: 0 1px 0 rgba(0,0,0,.2); cursor: pointer;"
 var style_span = "display: block; position: relative; padding: 0 12px; height: 30px; background: #1275ff; background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4); font-size: 15px; line-height: 30px; color: #fff; font-weight: 700; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; text-shadow: 0 -1px 0 rgba(0,0,0,.2); box-shadow: inset 0 1px 0 hsla(0,0%,100%,.25); border-radius: 3px; padding-left: 44px;"
