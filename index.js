@@ -9,7 +9,7 @@ app.set('view engine', 'hbs')
 
 var style = "display: inline-block; margin-bottom: 1px; background-image: linear-gradient(#28a0e5,#015e94); -webkit-font-smoothing: antialiased; border: 0; padding: 1px; height: 32px; border-radius: 4px;     box-shadow: 0 1px 0 rgba(0,0,0,.2); cursor: pointer;"
 var style_span = "display: block; position: relative; padding: 0 12px; height: 30px; background: #1275ff; background-image: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4); font-size: 15px; line-height: 30px; color: #fff; font-weight: 700; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; text-shadow: 0 -1px 0 rgba(0,0,0,.2); box-shadow: inset 0 1px 0 hsla(0,0%,100%,.25); border-radius: 3px; padding-left: 44px;"
-console.log('SECRET KEY is %o', process.env.STRIPE_SECRET_KEY)
+console.log('SECRET KEY is %o & client_id is %o', process.env.STRIPE_SECRET_KEY, process.env.CLIENT_ID)
 
 var oauthAccess = async function(authInfo){
     // Set your secret key. Remember to switch to your live secret key in production!
@@ -33,8 +33,15 @@ app.get('/test', (req, res) => {
     })
   })
 
+
 app.get('/', (req, res) => {
-    res.send(`<a href="https://connect.stripe.com/oauth/authorize?response_type=code&amp;client_id=ca_H3V8gmNuP0Z48BjOZ8EPeX4HQOhQH3Ta&amp;scope=read_write" class="connect-button" style=${style}><span style=${style_span}>Connect with Stripe</span></a>`)
+    //res.send(`<a href="https://connect.stripe.com/oauth/authorize?response_type=code&amp;client_id=ca_H3V8gmNuP0Z48BjOZ8EPeX4HQOhQH3Ta&amp;scope=read_write" class="connect-button" style=${style}><span style=${style_span}>Connect with Stripe</span></a>`)
+    res.render('connect', {
+        title: 'Standard Connect',
+        clientid: `${process.env.CLIENT_ID}`,
+        style:style,
+        style_span:style_span
+      })
 })
 
 app.get('/oauth', async (req, res) => {
