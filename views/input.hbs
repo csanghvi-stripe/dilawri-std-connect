@@ -1,0 +1,20 @@
+<div class='jumbotron'>
+    <div class='container'>
+        <h1> Connect Stripe accounts using standard connect</h1>
+        
+        </div>
+    </div>
+<div class='container'>
+        <form action="/" method="post" role='form' enctype="application/x-www-form-urlencoded" >
+            <legend>Enter Stripe platform credentials here</legend> 
+            <div class="form-group">
+                <label for="clientid">Stripe connect client Id</label>
+                <input type="text" required class="form-control" name='clientid' id="clientid" placeholder="ca_" >
+            </div>
+            <div class="form-group">
+                <label for="secretkey">Stripe secret key</label>
+                <input type="text"  required class="form-control" name='secretkey' id="secertkey" placeholder="sk_">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
